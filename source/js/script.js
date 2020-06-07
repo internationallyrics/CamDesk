@@ -88,6 +88,9 @@ function handleError(error) {
 videoSelect.onchange = start;
 start();
 
+brightness = 1;
+
+
 $(window).on("keydown", function(e) {
   e.preventDefault();
   
@@ -140,4 +143,26 @@ shortcut.add("Tab", function() {
 // Close the app on Chromebooks
 shortcut.add("Esc", function() {
   window.close();
+});
+
+shortcut.add("Up", function() {
+	brightness += 0.1;
+	filterVal = "brightness("+brightness+")";
+	$("#videosrc")
+	  .css('filter',filterVal)
+	  .css('webkitFilter',filterVal)
+	  .css('mozFilter',filterVal)
+	  .css('oFilter',filterVal)
+	  .css('msFilter',filterVal);
+});
+
+shortcut.add("Down", function() {
+	brightness -= 0.1;
+	filterVal = "brightness("+brightness+")";
+	$("#videosrc")
+	  .css('filter',filterVal)
+	  .css('webkitFilter',filterVal)
+	  .css('mozFilter',filterVal)
+	  .css('oFilter',filterVal)
+	  .css('msFilter',filterVal);
 });
